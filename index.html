@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hangman Game</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+
+
+<div class="container">
+    
+    
+  <div class="row col-md-12">
+    <div class="page-header">
+        <h1>HANGMAN - NBA Edition</h1>
+        <h2 id = "anyKey">Press any key to begin</h2><!-- remember to make this not in game   docuement.getelementid=null-->
+            </div> </div>
+    
+    
+    <div class="row"> 
+        <div class="col-md-3">
+        <img src="assets/images/nba.jpg" alt="nba">
+         </div> 
+        
+        <div class="col-md-9">
+      <div class="Hangman">
+         <p><center>Please guess the NBA team.</center> </p>
+         <button onclick="startGame()">TIP OFF TIME</button>
+        
+      </div> 
+    </div>
+        
+    
+    </div>
+
+<div class"row">
+  <div class="col-md-12">
+    <h3 id="status">Guesses Left: 6<span id="status>"></span></h3>
+    <p id ="statusDiv" onclick="resetGame()""></p>
+  </div>
+  <div class="col-md-5 col-md-push-1 col-xs-12 row-3">
+        <h4>Do no repeat the following letters below: </h4>
+        <p><span id="mistakes"></span></p>
+      </div>
+    </div> 
+  </div>
+
+   
+        <div class="row"> <center>Alex Nguyen Copyright 2017</center>
+            
+    </div>
+
+  </div> <!-- end container-->
+    
+
+</body>
+
+</html>
+
