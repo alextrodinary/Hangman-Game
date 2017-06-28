@@ -1,16 +1,23 @@
-var nbaTeams = ["lakers", "cavaliers", "warriors", "spurs"];
-var guesses = 6;
+//var nbaTeams = ["lakers", "cavaliers", "warriors", "spurs"];
+var count = 6;
 var wins = 0;
-var loses = 0;
+var losses = 0;
 var gamesDiv = document.getElementById("games");
-var statusDiv = document.getElementById("satusDiv");
+var statusDiv = document.getElementById("statusDiv");
+var gameChosen;
+var guesses;
+
+
+
+
+
 
 
 
 function startGame(){
     var nbaTeams = ["lakers", "cavaliers", "warriors", "spurs"];
 	var randomTeam = Math.floor(Math.random() * nbateams.length);
-	gameChosen = nbateams[randomTeam];
+	gameChosen = nbaTeams[randomTeam];
 	if(gameChosen === "lakers"){
 		console.log("lakers game");
 		for(var i = 0; i < 6; i++){
@@ -39,7 +46,7 @@ function startGame(){
 				var spaces = document.createElement("letterSpace");
 				spaces.innerHTML = "__ ";
 				gamesDiv.appendChild(spaces);
-				space.setAttribute("id", letters[i]);
+				spaces.setAttribute("id", letters[i]);
 			}
 	}
 	if(gameChosen === "spurs"){
@@ -49,17 +56,18 @@ function startGame(){
 				var spaces = document.createElement("letterSpace");
 				spaces.innerHTML = "__ ";
 				gamesDiv.appendChild(spaces);
-				space.setAttribute("id", letters[i]);
+				spaces.setAttribute("id", letters[i]);
 			}
 	}
 	document.getElementById("status").innerHTML = "Guesses Left: 6";
 }
 
-document.onkeypress = fucntion(event){
+document.onkeypress = function(event){
 	guesses = event.key.toLowerCase();
 
 	if(gameChosen === "lakers") {
 		console.log("lakers game");
+
 		var wrongLetter = ["b", "c", "d", "b", "f", "g", "h", "i", "j", "m", "m", "o", "p", "q", "t", "u", "v", "w", "x", "y", "z"];
 		if(guesses === "l"){
 			document.getElementById("1").innerHTML = "l";
@@ -79,46 +87,48 @@ document.onkeypress = fucntion(event){
 		if(guesses === "6"){
 			document.getElementById("6").innerHTML = "s";
 		}
+
 		if((document.getElementById('1').innerHTML === "l") &&
-			(document.getElementById('2').innerHTML === "2") &&
-			(document.getElementById('3').innerHTML === "3") &&
-			(document.getElementById('4').innerHTML === "4") &&
-			(document.getElementById('5').innerHTML === "5") &&
-			(document.getElementById('6').innerHTML === "6")) {
+			(document.getElementById('2').innerHTML === "a") &&
+			(document.getElementById('3').innerHTML === "k") &&
+			(document.getElementById('4').innerHTML === "e") &&
+			(document.getElementById('5').innerHTML === "r") &&
+			(document.getElementById('6').innerHTML === "s")) {
 			document.getElementById("status").innerHTML = "CHAMPION!";
 			console.log("winner winner, chicken dinner");
 			wins++;
 			if(wins === 1) {
 				var winnerDiv = document.createElement('button');
-				winnerDiv.innerHTML = "Play Again";
+				winnerDiv.innerHTML = "Reset Game";
 				statusDiv.appendChild(winnerDiv);
-				winDiv.setAttribute("id", "lose-button");
+				winDiv.setAttribute("id", "win-button");
 
 			}
 		}
 
 		for( i = 0; i< incorrect.length; i ++){
 			if(guesses === incorrect[i]){
-				counter--;
-				console.log(counter);
-				document.getElementById("status").innerHTML = "Mistakes Left: " +counter;
-				var para = document.createElement("span");
+				count--;
+				console.log(count);
+				document.getElementById("status").innerHTML = "Mistakes Left: " +count;
+				var para = document.createElement("letterSpace");
 				var node = document.createTextNode(guesses+ " ");
-				para.appendChild(para);
+				para.appendChild(node);
+				var element = document.getElementById("wrongGuess");
+				element.appendChild(para);
 			}
-			else if(counter == 0){
+			else if(count == 0){
 				document.getElementById("status").innerHTML = "ANOTHER ONE BITES THE DUST!"
-				loses++;
-				if(loses === 1) {
-					var winDiv = document.createElement('button');
-					winDiv.innerHTML = "Reset Game Here";
-					statusDiv.appendChild(winDiv);
-					winDiv.setAttribute("id", "lose-button");
+				losses++;
+				if(losses === 1) {
+					var winnerDiv = document.createElement('button');
+					winnerDiv.innerHTML = "Reset Game Here";
+					statusDiv.appendChild(winnerDiv);
+					winnerDiv.setAttribute("id", "lose-button");
 				}
 			}
 		}
 	}
-}
 
 	if(gameChosen === "cavaliers") {
 		console.log("cavaliers game");
@@ -164,35 +174,36 @@ document.onkeypress = fucntion(event){
 			wins++;
 			if(wins === 1) {
 				var winnerDiv = document.createElement('button');
-				winnerDiv.innerHTML = "Play Again";
+				winnerDiv.innerHTML = "Reset Game";
 				statusDiv.appendChild(winnerDiv);
-				winDiv.setAttribute("id", "lose-button");
+				winDiv.setAttribute("id", "win-button");
 
 			}
 		}
 
-for( i = 0; i< incorrect.length; i ++){
+		for( i = 0; i< incorrect.length; i ++){
 			if(guesses === incorrect[i]){
-				counter--;
-				console.log(counter);
-				document.getElementById("status").innerHTML = "Mistakes Left: " +counter;
-				var para = document.createElement("span");
+				count--;
+				console.log(count);
+				document.getElementById("status").innerHTML = "Mistakes Left: " +count;
+				var para = document.createElement("letterSpace");
 				var node = document.createTextNode(guesses+ " ");
-				para.appendChild(para);
+				para.appendChild(node);
+				var element = document.getElementById("wrongGuess");
+				element.appendChild(para);
 			}
-			else if(counter == 0){
+			else if(count == 0){
 				document.getElementById("status").innerHTML = "ANOTHER ONE BITES THE DUST!"
-				loses++;
-				if(loses === 1) {
-					var winDiv = document.createElement('button');
-					winDiv.innerHTML = "Reset Game Here";
-					statusDiv.appendChild(winDiv);
-					winDiv.setAttribute("id", "lose-button");
+				losses++;
+				if(losses === 1) {
+					var winnerDiv = document.createElement('button');
+					winnerDiv.innerHTML = "Reset Game Here";
+					statusDiv.appendChild(winnerDiv);
+					winnerDiv.setAttribute("id", "lose-button");
 				}
 			}
 		}
 	}
-}
 
 	if(gameChosen === "warriors") {
 		console.log("warriors game");
@@ -234,37 +245,36 @@ for( i = 0; i< incorrect.length; i ++){
 			wins++;
 			if(wins === 1) {
 				var winnerDiv = document.createElement('button');
-				winnerDiv.innerHTML = "Play Again";
+				winnerDiv.innerHTML = "Reset Game";
 				statusDiv.appendChild(winnerDiv);
-				winDiv.setAttribute("id", "lose-button");
+				winDiv.setAttribute("id", "win-button");
 
 			}
 		}
 
-for( i = 0; i< incorrect.length; i ++){
+		for( i = 0; i< incorrect.length; i ++){
 			if(guesses === incorrect[i]){
-				counter--;
-				console.log(counter);
-				document.getElementById("status").innerHTML = "Mistakes Left: " +counter;
-				var para = document.createElement("span");
+				count--;
+				console.log(count);
+				document.getElementById("status").innerHTML = "Mistakes Left: " +count;
+				var para = document.createElement("letterSpace");
 				var node = document.createTextNode(guesses+ " ");
-				para.appendChild(para);
+				para.appendChild(node);
+				var element = document.getElementById("wrongGuess");
+				element.appendChild(para);
 			}
-			else if(counter == 0){
+			else if(count == 0){
 				document.getElementById("status").innerHTML = "ANOTHER ONE BITES THE DUST!"
-				loses++;
-				if(loses === 1) {
-					var winDiv = document.createElement('button');
-					winDiv.innerHTML = "Reset Game Here";
-					statusDiv.appendChild(winDiv);
-					winDiv.setAttribute("id", "lose-button");
+				losses++;
+				if(losses === 1) {
+					var winnerDiv = document.createElement('button');
+					winnerDiv.innerHTML = "Reset Game Here";
+					statusDiv.appendChild(winnerDiv);
+					winnerDiv.setAttribute("id", "lose-button");
 				}
 			}
 		}
 	}
-}
-
-
 
 
 	if(gameChosen === "spurs") {
@@ -295,30 +305,32 @@ for( i = 0; i< incorrect.length; i ++){
 			wins++;
 			if(wins === 1) {
 				var winnerDiv = document.createElement('button');
-				winnerDiv.innerHTML = "Play Again";
+				winnerDiv.innerHTML = "Reset Game";
 				statusDiv.appendChild(winnerDiv);
-				winDiv.setAttribute("id", "lose-button");
+				winDiv.setAttribute("id", "win-button");
 
 			}
 		}
 
-for( i = 0; i< incorrect.length; i ++){
+		for( i = 0; i< incorrect.length; i ++){
 			if(guesses === incorrect[i]){
-				counter--;
-				console.log(counter);
-				document.getElementById("status").innerHTML = "Mistakes Left: " +counter;
-				var para = document.createElement("span");
+				count--;
+				console.log(count);
+				document.getElementById("status").innerHTML = "Mistakes Left: " +count;
+				var para = document.createElement("letterSpace");
 				var node = document.createTextNode(guesses+ " ");
-				para.appendChild(para);
+				para.appendChild(node);
+				var element = document.getElementById("wrongGuess");
+				element.appendChild(para);
 			}
-			else if(counter == 0){
+			else if(count == 0){
 				document.getElementById("status").innerHTML = "ANOTHER ONE BITES THE DUST!"
-				loses++;
-				if(loses === 1) {
-					var winDiv = document.createElement('button');
-					winDiv.innerHTML = "Reset Game Here";
-					statusDiv.appendChild(winDiv);
-					winDiv.setAttribute("id", "lose-button");
+				losses++;
+				if(losses === 1) {
+					var winnerDiv = document.createElement('button');
+					winnerDiv.innerHTML = "Reset Game Here";
+					statusDiv.appendChild(winnerDiv);
+					winnerDiv.setAttribute("id", "lose-button");
 				}
 			}
 		}
