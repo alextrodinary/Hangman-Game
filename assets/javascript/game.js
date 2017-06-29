@@ -9,27 +9,23 @@ var guesses;
 
 
 
-
-
-
-
-
 function startGame(){
     var nbaTeams = ["lakers", "cavaliers", "warriors", "spurs"];
-	var randomTeam = Math.floor(Math.random() * nbateams.length);
-	gameChosen = nbaTeams[randomTeam];
+	var randomTeam = Math.floor(Math.random() * nbaTeams.length);
+	gameChosen = (nbaTeams[randomTeam]);
+	//console.log("random team selected");
 	if(gameChosen === "lakers"){
-		console.log("lakers game");
+		//console.log("lakers game");
 		for(var i = 0; i < 6; i++){
 			var letters = ['1','2','3','4','5','6',];
-			var spaces = document.createElement("letterSpace"); //create letters?
+			var spaces = document.createElement("letterSpace"); //create letters
 			spaces.innerHTML = "__ ";
 			gamesDiv.appendChild(spaces);
 			spaces.setAttribute("id", letters[i]); 
 		}
 	}
 	if(gameChosen === "cavaliers")
-		console.log("cavaliers game");
+		//console.log("cavaliers game");
 		for(var i = 0 ; i < 9; i++){
 			var letters = ['1', '2', '3', '4', '5', '6', '7', '8'];
 			var spaces = document.createElement("letterSpace");
@@ -40,7 +36,7 @@ function startGame(){
 		}
 	}
 	if(gameChosen === "warriors") {
-		console.log("warriors game");
+		//console.log("warriors game");
 			for(var i =0; i < 8 ; i++){
 				var letters = ['1', '2', '3', '4', '5', '6', '7', '8'];
 				var spaces = document.createElement("letterSpace");
@@ -50,7 +46,7 @@ function startGame(){
 			}
 	}
 	if(gameChosen === "spurs"){
-		console.log ("spurs game");
+		//console.log ("spurs game");
 			for(var i =0; i < 5; i++){
 				var letters = ['1', '2', '3', '4','5'];
 				var spaces = document.createElement("letterSpace");
